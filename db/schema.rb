@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_26_150638) do
     t.float "price"
     t.string "name"
     t.string "category"
-    t.string "description" #change to text
+    t.text "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_26_150638) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "comment" #text
+    t.text "comment"
     t.integer "rating"
     t.bigint "order_item_id", null: false
     t.datetime "created_at", null: false
