@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Items</h1>
+<div id="items">
+  <% @items.each do |item| %>
+    <div class="item">
+      <strong><%= item.name %></strong><br>
+      <strong>$<%= item.price %></strong><br>
+      <strong><%= item.average_rating %></strong><br>
+    <p>
+      <%= link_to "Show this item", item %>
+    </p>
+  <% end %>
+</div>
