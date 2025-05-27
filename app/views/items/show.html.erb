@@ -1,0 +1,14 @@
+
+<div class="d-flex">
+  <%= image_tag "logo.png", size:660 %>
+  <div class="d-flex flex-column m-5 gap-3 h-100">
+    <strong>Name:</strong><%= @item.name %>
+      <strong>Rating:</strong> <%= '<i class="fa-regular fa-star"></i>'.html_safe * 3 %>
+      <strong>Description:</strong><%= @item.description %>
+    <strong>Category:</strong><%= @item.category %>
+  <strong>Price</strong><%= @item.price.to_s %>$
+  <%= number_field_tag :quantity, 1, min: 1,
+          class: "form-control w-auto d-inline-block me-2" %>
+  <a class="btn btn-primary" href="#">Add to Cart</a>
+  </div>
+</div>
