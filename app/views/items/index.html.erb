@@ -1,8 +1,32 @@
-<h1>Items</h1>
-<div id="items" class = "card-container">
-  <% @items.each do |item| %>
-    <%= link_to item_path(item) do %>
-      <%= render "shared/card", item:item %>
+
+<!-- Search bar -->
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form">
+    <input class="form-control" type="text" name="search[query]" id="search_query" />
+    <button name="button" type="submit" class="btn">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+<% end %>
+
+<!-- Filter for categories -->
+<div class="main-container">
+  <div class="category-boxes">
+    <%= link_to "All", items_path, class: "category-box #{'active' unless params[:category].present?}" %>
+    <% Item::CATEGORIES.each do |category| %>
+      <%= link_to items_path(category: category), class: "category-box #{'active' if params[:category] == category}" do %>
+        <%= category %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
+  <!-- Display of the items -->
+  <h3>today's offers</h3>
+  <div id="items" class = "card-container">
+    <% @items.each do |item| %>
+      <%= link_to item_path(item) do %>
+        <%= render "shared/card", item:item %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
