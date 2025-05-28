@@ -1,4 +1,5 @@
 
+CartItem.destroy_all
 Item.destroy_all
 User.destroy_all
 
@@ -79,3 +80,10 @@ Item.create!(name: "Facial Cleansing Brush",                    description: "Si
 Item.create!(name: "Ionic Hair Dryer",                          description: "1875 W, 2 speed/heat settings, concentrator nozzle.",     price: 34.99,  user: seller_b, category: "Beauty & Personal Care")
 Item.create!(name: "Organic Lip Balm Trio",                     description: "Beeswax-based; mint, strawberry, vanilla.",               price: 9.99,   user: seller_b, category: "Beauty & Personal Care")
 Item.create!(name: "Nourishing Body Lotion (16 oz)",            description: "Shea butter & aloe vera; fast-absorbing.",                price: 12.99,  user: seller_b, category: "Beauty & Personal Care")
+
+CartItem.create!(cart: buyer_1.cart, item: Item.all[0], quantity: 1)
+CartItem.create!(cart: buyer_1.cart, item: Item.all[1], quantity: 1)
+CartItem.create!(cart: buyer_1.cart, item: Item.all[2], quantity: 1)
+CartItem.create!(cart: buyer_1.cart, item: Item.all[3], quantity: 1)
+CartItem.create!(cart: buyer_1.cart, item: Item.all[4], quantity: 1)
+CartItem.create!(cart: buyer_1.cart, item: Item.all[5], quantity: 1)
