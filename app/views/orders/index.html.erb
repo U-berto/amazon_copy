@@ -1,22 +1,45 @@
 
-<div class="d-flex flex-wrap gap-3">
+<div class="orders-container">
   <% @orders.each do |order| %>
-    <div class="card mb-4" style="width: 20rem;">
-      <div class="card-header">
-        Status: <%= order.status %>
-      </div>
+    <div class="cart-container mb-5">
+      <!-- Order status above the table -->
+      <h5 class="mb-3">Order Status: <%= order.status %></h5>
 
-      <div class="card-body">
-        <% order.order_items.each do |order_item| %>
-          <div class="d-flex justify-content-between mb-2">
-            <span><%= order_item.item.name %> × <%= order_item.quantity %></span>
-            <span><%= order_item.price %>$</span>
-          </div>
-          <div class="card-footer">
-            <% subtotal = order_item.all.price * order_item.all.quantity %>$
-          </div>
-        <% end %>
-      </div>
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th class="cart-header">Product Name</th>
+            <th class="cart-header">Price</th>
+            <th class="cart-header">Quantity</th>
+            <th class="cart-header">Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% total_price = 0 %>
+          <% order.order_items.each do |order_item| %>
+            <% item_price   = order_item.item.price %>
+            <% quantity     = order_item.quantity %>
+            <% item_total   = item_price * quantity %>
+            <% total_price += item_total %>
+
+            <tr class="cart-row">
+              <td class="cart-data"><%= order_item.item.name %></td>
+              <td class="cart-data">$<%= item_price %></td>
+              <td class="cart-data">
+                <span class="cart-quantity"><%= quantity %></span>
+              </td>
+              <td class="cart-data">$<%= item_total %></td>
+            </tr>
+          <% end %>
+
+          <!-- order total row -->
+          <tr class="cart-row">
+            <td class="cart-header"><h7 class="mb-3">Created at: <%= order.created_at.strftime("%F") %></td>
+            <td colspan="3" class="cart-data text-end"><strong>Order Total:</strong></td>
+            <td class="cart-data"><strong>$<%= total_price.round(2) %></strong></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   <% end %>
 </div>
