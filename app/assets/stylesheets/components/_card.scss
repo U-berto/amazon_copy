@@ -8,6 +8,7 @@
 
     .card {
     width: 250px;
+    height: 400px;
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
@@ -47,4 +48,10 @@
     color: #666;
     font-size: 0.95rem;
     margin-bottom: 12px;
+    }
+
+    .card-container a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
     }
