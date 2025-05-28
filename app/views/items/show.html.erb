@@ -3,12 +3,36 @@
   <%= image_tag "logo.png", size:660 %>
   <div class="d-flex flex-column m-5 gap-3 h-100">
     <strong>Name:</strong><%= @item.name %>
-      <strong>Rating:</strong> <%= '<i class="fa-regular fa-star"></i>'.html_safe * 3 %>
+    <div class="d-inline-block me-1">
+      <strong>Rating:</strong> <%= '<i id="stars" class="fa-regular fa-star"></i>'.html_safe * 3.to_i %>
+    </div>
       <strong>Description:</strong><%= @item.description %>
     <strong>Category:</strong><%= @item.category %>
   <strong>Price</strong><%= @item.price.to_s %>$
-  <%= number_field_tag :quantity, 1, min: 1,
+  <%# <%= number_field_tag :quantity, 1, min: 1,
           class: "form-control w-auto d-inline-block me-2" %>
-  <a class="btn btn-primary" href="#">Add to Cart</a>
+  <%# <a class="btn btn-primary" href="#">Add to Cart</a> %>
+  <%= simple_form_for :cart_item,
+                   url: cart_items_path,
+                   method: :post,
+                   html: { class: 'd-inline-block' } do |f| %>
+  <%= f.input :item_id,
+              as: :hidden,
+              input_html: { value: @item.id } %>
+  <%= f.input :quantity,
+              as: :integer,
+              input_html: {
+                value: 1,
+                min:   1,
+                class: "form-control w-auto d-inline-block me-2"
+              },
+              wrapper: false,
+              label:   false %>
+  <%= f.button :submit,
+               "Add to Cart",
+               class: "btn btn-primary" %>
+<% end %>
   </div>
 </div>
+
+<%# add Gianlu's method here on line 7 %>
