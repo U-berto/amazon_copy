@@ -1,0 +1,22 @@
+
+<div class="d-flex flex-wrap gap-3">
+  <% @orders.each do |order| %>
+    <div class="card mb-4" style="width: 20rem;">
+      <div class="card-header">
+        Status: <%= order.status %>
+      </div>
+
+      <div class="card-body">
+        <% order.order_items.each do |order_item| %>
+          <div class="d-flex justify-content-between mb-2">
+            <span><%= order_item.item.name %> × <%= order_item.quantity %></span>
+            <span><%= order_item.price %>$</span>
+          </div>
+          <div class="card-footer">
+            <% subtotal = order_item.all.price * order_item.all.quantity %>$
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

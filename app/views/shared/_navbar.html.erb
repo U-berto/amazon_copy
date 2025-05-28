@@ -21,7 +21,7 @@
             <img class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" <%= image_tag "menu.png", size: "30x30" %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">My Cart</a>
-              <a class="dropdown-item" href="#">My Orders</a>
+              <a class="dropdown-item" href="<%= orders_path %>">My Orders</a>
                <a class="dropdown-item" href="#">My Profile</a>
               <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
             </div>
