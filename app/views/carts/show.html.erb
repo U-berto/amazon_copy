@@ -1,0 +1,44 @@
+<h1 class="cart-main-header">My Cart</h1>
+
+<% if @cart_items.present? %>
+ <div class="cart-container">
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th class="cart-header">Product Name</th>
+        <th class="cart-header">Price</th>
+        <th class="cart-header">Quantity</th>
+        <th class="cart-header">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% total_price = 0 %>
+      <% @cart_items.each do |cart_item| %>
+        <% item_total = cart_item.quantity * cart_item.item.price %>
+        <% total_price += item_total %>
+        <tr class="cart-row">
+          <td class="cart-data"><%= cart_item.item.name %></td>
+          <td class="cart-data">$<%= cart_item.item.price %></td>
+          <td class="cart-data">
+            <span class="cart-quantity"><%= cart_item.quantity %></span>
+          </td>
+          <td class="cart-data">$<%= item_total %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="summary-container">
+    <table class="summary-table">
+      <tr>
+        <td><strong>Total Price:</strong></td>
+        <td style="text-align: right;">$<%= '%.2f' % total_price %></td>
+      </tr>
+    </table>
+    <button class="checkout-button">Proceed to Checkout</button>
+  </div>
+</div>
+ 
+<% else %>
+  <p>Your cart is empty.</p>
+<% end %>
