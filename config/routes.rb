@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   resources :items, only: [:show, :index]
   resources :cart_items, only: [:create, :destroy]
   resources :orders, only: [:index, :create]
+
+  resources :order_items, only: [] do
+    resources :reviews, only: [:new, :create]
+  end
+
   root to: "items#index"
   get "up" => "rails/health#show", as: :rails_health_check
 end
