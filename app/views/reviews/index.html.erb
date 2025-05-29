@@ -1,0 +1,17 @@
+<h2> Reviews for <%= @items.name %> </h2>
+
+<% if @reviews.any? %>
+  <ul class="list-group">
+    <% @reviews.each do |review| %>
+      <li class="list-group-item">
+        <strong>Rating:</strong> <%= review.rating %>/5 <br>
+        <strong>Comment:</strong> <%= review.comment %> <br>
+        <% if review.user %>
+        <small class="text-muted">By <%= review.user.email %></small>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No reviews yet</p>
+<% end %>

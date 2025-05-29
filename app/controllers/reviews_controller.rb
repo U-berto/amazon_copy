@@ -1,5 +1,10 @@
 class ReviewsController < ApplicationController
-  before_action :set_order_item
+  before_action :set_order_item, only: [:create]
+
+  def index
+    @items = Item.find(params[:item_id])
+    @reviews = @items.reviews
+  end
 
   def new
     @review = Review.new

@@ -4,7 +4,13 @@
   <div class="d-flex flex-column m-5 gap-3 h-100">
     <strong>Name:</strong><%= @item.name %>
     <div class="d-inline-block me-1">
-      <strong>Rating:</strong> <%= '<i id="stars" class="fa-regular fa-star"></i>'.html_safe * @item.average_rating.to_i %>
+      <strong>Average rating:</strong>
+      <%= '<i id="stars" class="fa-regular fa-star"></i>'.html_safe * @item.average_rating.to_i %>
+        <%# <% @item.average_rating.to_i.times do %>
+          <%# <i class="fa-regular fa-star"></i> %>
+        <%# <% end %>
+
+      <%= link_to "View all reviews", item_reviews_path(@item), class:"btn btn-outline-secondary btn-sm sm-2" %>
     </div>
       <strong>Description:</strong><%= @item.description %>
     <strong>Category:</strong><%= @item.category %>
