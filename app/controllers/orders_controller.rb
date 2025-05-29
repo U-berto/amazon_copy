@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to orders_path, notice: 'Thanks for your purchase!'
     else
-      redirect_to orders_path, notice: "Something went wrong..."
+      redirect_to cart_path, notice: "Something went wrong..."
     end
   end
 end
