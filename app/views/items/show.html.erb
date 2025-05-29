@@ -4,14 +4,11 @@
   <div class="d-flex flex-column m-5 gap-3 h-100">
     <strong>Name:</strong><%= @item.name %>
     <div class="d-inline-block me-1">
-      <strong>Rating:</strong> <%= '<i id="stars" class="fa-regular fa-star"></i>'.html_safe * 3.to_i %>
+      <strong>Rating:</strong> <%= '<i id="stars" class="fa-regular fa-star"></i>'.html_safe * @item.average_rating.to_i %>
     </div>
       <strong>Description:</strong><%= @item.description %>
     <strong>Category:</strong><%= @item.category %>
   <strong>Price</strong><%= @item.price.to_s %>$
-  <%# <%= number_field_tag :quantity, 1, min: 1,
-          class: "form-control w-auto d-inline-block me-2" %>
-  <%# <a class="btn btn-primary" href="#">Add to Cart</a> %>
   <%= simple_form_for :cart_item,
                    url: cart_items_path,
                    method: :post,
@@ -34,5 +31,3 @@
 <% end %>
   </div>
 </div>
-
-<%# add Gianlu's method here on line 7 %>
