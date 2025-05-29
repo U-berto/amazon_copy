@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'order_items/create'
   devise_for :users
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show, :index]
   resources :cart_items, only: [:create]
-  resources :orders, only: [:index]
+  resources :orders, only: [:index, :create]
   root to: "items#index"
   get "up" => "rails/health#show", as: :rails_health_check
 

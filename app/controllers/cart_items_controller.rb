@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     #
     @cart_item.cart = current_user.cart
- 
+
     if @cart_item.save
       redirect_to cart_path, notice: "Item added!"
     else
