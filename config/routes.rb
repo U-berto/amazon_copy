@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'cart', to: 'carts#show', as: 'cart'
 
   resources :items, only: [:show, :index]
-  resources :cart_items, only: [:create]
+  resources :cart_items, only: [:create, :destroy]
   root to: "items#index"
   get "up" => "rails/health#show", as: :rails_health_check
 
