@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'users/new'
-  get 'users/create'
-  get 'order_items/create'
-
   devise_for :users
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -14,6 +9,7 @@ Rails.application.routes.draw do
   resources :items, only: [:show, :index]
   resources :cart_items, only: [:create, :destroy]
   resources :orders, only: [:index, :create]
+  # resources :users, only: [:edit, :update]
 
   resources :order_items, only: [] do
     resources :reviews, only: [:new, :create]

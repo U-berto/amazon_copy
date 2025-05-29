@@ -22,10 +22,10 @@
           <li class="nav-item dropdown">
             <img class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" <%= image_tag "menu.png", size: "30x30" %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-             
+
               <a class="dropdown-item" href="<%= cart_path %>">My Cart</a>
               <a class="dropdown-item" href="<%= orders_path %>">My Orders</a>
-              <a class="dropdown-item" href="#">My Profile</a>
+              <%= link_to "My Profile", edit_user_registration_path, class:"dropdown-item" %>
               <%= link_to "Log out",  destroy_user_session_path, class:"dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>
