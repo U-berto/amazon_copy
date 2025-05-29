@@ -1,0 +1,78 @@
+#sign-in-container {
+  margin-top: 90px; 
+  padding: 20px;
+}
+
+.profile-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+.profile-container h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.profile-form .form-inputs {
+  margin-bottom: 15px;
+}
+
+.profile-form .form-actions {
+  text-align: center;
+}
+
+.profile-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile-form .btn-primary {
+  background-color: rgb(38, 38, 38);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.profile-form .btn-primary:hover {
+  background-color: black;
+}
+
+.auth-links {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.auth-links a {
+  color: #676869;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+.custom-sign-in-out-btn {
+  display: inline-block;
+  color: rgb(68, 68, 68);
+  padding: 10px 15px;
+  border-radius: 15px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.custom-sign-in-out-btn:hover {
+  background-color: #bebebf; 
+}
