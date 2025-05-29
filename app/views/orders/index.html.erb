@@ -21,6 +21,11 @@
             <% quantity     = order_item.quantity %>
             <% item_total   = item_price * quantity %>
             <% total_price += item_total %>
+              <% if order_item.reviews.any? %>
+                <p>Review already present</p>
+              <% else %>
+                <%= link_to "Review", new_order_item_review_path(order_item), class: "btn btn-primary" %>
+              <% end %>
 
             <tr class="cart-row">
               <td class="cart-data"><%= order_item.item.name %></td>
