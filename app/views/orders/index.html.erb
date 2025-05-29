@@ -12,6 +12,7 @@
             <th class="cart-header">Price</th>
             <th class="cart-header">Quantity</th>
             <th class="cart-header">Total Price</th>
+            <th class="cart-header">Review</th>
           </tr>
         </thead>
         <tbody>
@@ -21,11 +22,7 @@
             <% quantity     = order_item.quantity %>
             <% item_total   = item_price * quantity %>
             <% total_price += item_total %>
-              <% if order_item.reviews.any? %>
-                <p>Review already present</p>
-              <% else %>
-                <%= link_to "Review", new_order_item_review_path(order_item), class: "btn btn-primary" %>
-              <% end %>
+
 
             <tr class="cart-row">
               <td class="cart-data"><%= order_item.item.name %></td>
@@ -34,6 +31,13 @@
                 <span class="cart-quantity"><%= quantity %></span>
               </td>
               <td class="cart-data">$<%= item_total %></td>
+              <td class="cart-data">
+                 <% if order_item.reviews.any? %>
+                <span class ="text-muted small">Reviewed</span>
+              <% else %>
+                <%= link_to "Review", new_order_item_review_path(order_item), class: "btn btn-primary" %>
+              <% end %>
+              </td>
             </tr>
           <% end %>
 
