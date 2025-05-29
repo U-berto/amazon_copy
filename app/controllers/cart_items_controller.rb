@@ -1,7 +1,6 @@
 class CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
-    #
     @cart_item.cart = current_user.cart
 
     if @cart_item.save
@@ -11,6 +10,13 @@ class CartItemsController < ApplicationController
                     alert: "Couldn’t add item."
     end
   end
+
+  def destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_path, notice: "Item removed!"
+  end
+
 
   private
 
