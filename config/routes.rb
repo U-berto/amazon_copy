@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   get 'users/new'
   get 'users/create'
+  get 'order_items/create'
+
   devise_for :users
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -8,10 +11,14 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'cart', to: 'carts#show', as: 'cart'
-
   resources :items, only: [:show, :index]
-  resources :cart_items, only: [:create]
+  resources :cart_items, only: [:create, :destroy]
+  resources :orders, only: [:index, :create]
+
+  resources :order_items, only: [] do
+    resources :reviews, only: [:new, :create]
+  end
+
   root to: "items#index"
   get "up" => "rails/health#show", as: :rails_health_check
-
 end

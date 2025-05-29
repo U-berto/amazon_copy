@@ -1,4 +1,6 @@
 
+OrderItem.destroy_all
+Order.destroy_all
 CartItem.destroy_all
 Item.destroy_all
 User.destroy_all
@@ -45,7 +47,7 @@ buyer_3 = User.create!(
 )
 
 # 3) 30 Items (5 per category)
-Item.create!(name: "Wireless Noise-Cancelling Headphones",        description: "Over-ear Bluetooth headphones with ANC and 30h battery.", price: 199.99, user: seller, category: "Electronics")
+Item.create!(name: "Wireless Noise-Cancelling Headphones",      description: "Over-ear Bluetooth headphones with ANC and 30h battery.", price: 199.99, user: seller, category: "Electronics")
 Item.create!(name: "55\" Smart LED 4K TV",                      description: "Ultra HD smart TV with built-in streaming apps.",         price: 449.50, user: seller, category: "Electronics")
 Item.create!(name: "Portable Bluetooth Speaker",                description: "Waterproof, 12h play time, speakerphone.",                price: 59.99,  user: seller, category: "Electronics")
 Item.create!(name: "128GB USB-C Flash Drive",                   description: "High-speed USB 3.1 Type-C thumb drive.",                  price: 24.95,  user: seller, category: "Electronics")
@@ -87,3 +89,8 @@ CartItem.create!(cart: buyer_1.cart, item: Item.all[2], quantity: 1)
 CartItem.create!(cart: buyer_1.cart, item: Item.all[3], quantity: 1)
 CartItem.create!(cart: buyer_1.cart, item: Item.all[4], quantity: 1)
 CartItem.create!(cart: buyer_1.cart, item: Item.all[5], quantity: 1)
+
+# 4) Orders for Reviews test
+
+order_1 = Order.create!(user: buyer_1, status: "confirmed")
+OrderItem.create!(order: order_1, item: Item.last, quantity: 1, price: Item.last.price)
