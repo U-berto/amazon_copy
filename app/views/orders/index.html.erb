@@ -2,8 +2,8 @@
 <div class="orders-container">
   <% @orders.each do |order| %>
     <div class="cart-container mb-5">
-      <!-- Order status above the table -->
-      <h5 class="mb-3">Order Status: <%= order.status %></h5>
+
+      <h5 class="mb-3 text-success fw-bold">Order Status: <%= order.status %>!</h5>
 
       <table class="cart-table">
         <thead>
@@ -35,13 +35,13 @@
                  <% if order_item.reviews.any? %>
                 <span class ="text-muted small">Reviewed</span>
               <% else %>
-                <%= link_to "Review", new_order_item_review_path(order_item), class: "btn btn-primary" %>
+                <%= link_to "Review", new_order_item_review_path(order_item), class: "btn btn-dark rounded"%>
               <% end %>
               </td>
             </tr>
           <% end %>
 
-          <!-- order total row -->
+
           <tr class="cart-row">
             <td class="cart-header"><h7 class="mb-3">Created at: <%= order.created_at.strftime("%F") %></td>
             <td colspan="3" class="cart-data text-end"><strong>Order Total:</strong></td>

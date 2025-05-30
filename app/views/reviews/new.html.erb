@@ -1,13 +1,13 @@
-<h2>Leave a review</h2>
+<h2 class="fw-bold dispaly-5 mb-3">Leave a review</h2>
 
 <%= simple_form_for [@order_item, @review] do |f| %>
-  <div class="form-group">
+  <div class="form-group mb-5 fw-bold">
     <%= f.input :rating, as: :select, collection: 1..5, prompt: "Rating (1-5)" %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mb-5 fw-bold">
     <%= f.input :comment, label: "Write your review" %>
   </div>
 
-  <%= f.button :submit, "Submit", class: "btn btn-primary" %>
+  <%= f.button :submit, "Submit", class: "btn btn-dark" %>
 <% end %>
