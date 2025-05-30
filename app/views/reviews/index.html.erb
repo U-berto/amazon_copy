@@ -1,10 +1,22 @@
-<h2> Reviews for <%= @items.name %> </h2>
+<h2 class="mb-5 fw-bold"> Reviews for <%= @items.name %> </h2>
 
 <% if @reviews.any? %>
   <ul class="list-group">
     <% @reviews.each do |review| %>
-      <li class="list-group-item">
-        <strong>Rating:</strong> <%= review.rating %>/5 <br>
+      <li class="list-group-item border border-dark mb-4 rounded shadow-sm p-3">
+        <%# <strong>Rating:</strong> <%= review.rating/5 <br> %>
+        <strong>Rating:</strong>
+        <% full_stars = review.rating %>
+        <% empty_stars = 5 - full_stars %>
+
+        <% full_stars.times do %>
+          <i class="fa-solid fa-star text-warning"></i>
+        <% end %>
+        <% empty_stars.times do %>
+          <i class="fa-regular fa-star text-warning"></i>
+        <% end %>
+        <br>
+        
         <strong>Comment:</strong> <%= review.comment %> <br>
         <% if review.user %>
         <small class="text-muted">By <%= review.user.email %></small>
