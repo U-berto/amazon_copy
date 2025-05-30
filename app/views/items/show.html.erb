@@ -1,10 +1,14 @@
 
 <div class="all-page d-flex">
-  <%= image_tag "logo.png", size:660 %>
+    <%= cl_image_tag @item.image.key,
+          alt: @item.name,
+          width: 660,
+          crop: :scale,
+          class: "item-show-image" %>
 
   <div class="item-details-container">
     <div class="d-flex flex-column m-5 gap-3 h-100">
-    
+
         <div>
           <h1 class="name-of-product"><%= @item.name %></h1>
           <div class="reviews-container d-inline-block me-1">
@@ -13,14 +17,14 @@
             <%= link_to "(View all reviews)", item_reviews_path(@item), class:"review-link" %>
           </div>
         </div>
-    
+
             <div class="description-container d-flex align-items-center">
              <strong>Description: </strong><%= @item.description %>
             </div>
             <div class="category-text">
              <strong>Category:  </strong><%= @item.category %>
             </div>
-         
+
         <span class="price-tag"><%= @item.price.to_s %>$</span>
           <%= simple_form_for :cart_item,
                       url: cart_items_path,
@@ -30,7 +34,7 @@
                       as: :hidden,
                       input_html: { value: @item.id } %>
 
-          <div class="cart-action d-flex flex-column">    
+          <div class="cart-action d-flex flex-column">
           <%= f.input :quantity,
                       as: :integer,
                       input_html: {
