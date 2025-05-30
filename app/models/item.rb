@@ -8,9 +8,9 @@ class Item < ApplicationRecord
   'Electronics',
   'Books',
   'Clothing',
-  'Home & Kitchen',
-  'Sports & Outdoors',
-  'Beauty & Personal Care'
+  'Home',
+  'Sports',
+  'Beauty'
 ].freeze
 
 validates :category,
