@@ -1,10 +1,10 @@
 
 <!-- Search bar -->
 <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-  <div class="search-form">
+  <div class="search-form d-flex align-items-center" style="gap: 0.5rem;">
     <input class="form-control" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn">
-      <i class="fas fa-search"></i>
+    <button name="button" type="submit" class="btn d-flex align-items-center justify-content-center">
+      <i class="fas fa-search text-secondary"></i>
     </button>
   </div>
 <% end %>
@@ -21,7 +21,7 @@
   </div>
 
   <!-- Display of the items -->
-  <h3>today's offers</h3>
+  <h3 class="text-center text-dark fw-bold my-4 display-6">today's offers</h3>
   <div id="items" class = "card-container">
     <% @items.each do |item| %>
       <%= link_to item_path(item) do %>
