@@ -1,15 +1,15 @@
 
 <div class="d-flex">
-  <%= image_tag "logo.png", size:660 %>
+  <%= cl_image_tag @item.image.key,
+          alt: @item.name,
+          width: 660,
+          crop: :scale,
+          class: "item-show-image" %>
   <div class="d-flex flex-column m-5 gap-3 h-100">
     <strong>Name:</strong><%= @item.name %>
     <div class="d-inline-block me-1">
       <strong>Average rating:</strong>
       <%= '<i id="stars" class="fa-regular fa-star"></i>'.html_safe * @item.average_rating.to_i %>
-        <%# <% @item.average_rating.to_i.times do %>
-          <%# <i class="fa-regular fa-star"></i> %>
-        <%# <% end %>
-
       <%= link_to "View all reviews", item_reviews_path(@item), class:"btn btn-outline-secondary btn-sm sm-2" %>
     </div>
       <strong>Description:</strong><%= @item.description %>
