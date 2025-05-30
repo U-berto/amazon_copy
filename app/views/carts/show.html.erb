@@ -1,5 +1,6 @@
 <h1 class="cart-main-header">My Cart</h1>
 
+<div class="both-container">
 <% if @cart_items.present? %>
  <div class="cart-container">
   <table class="cart-table">
@@ -24,8 +25,11 @@
           </td>
           <td class="cart-data">$<%= item_total.round(2) %></td>
           <td>
-            <%= link_to "Remove", cart_item_path(cart_item),
-             data: {turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+            <%= link_to cart_item_path(cart_item),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                class: "btn btn-danger btn-sm" do %>
+                <i class="fa fa-trash"></i> 
+            <% end %>
           </td>
         </tr>
       <% end %>
@@ -39,13 +43,13 @@
         <td style="text-align: right;">$<%= '%.2f' % total_price %></td>
       </tr>
     </table>
-    <%= button_to 'Proceed to Checkout',
+    <%= button_to 'Pay',
                 orders_path,
                 method: :post,
                 class: 'checkout-button' %>
   </div>
 </div>
-
+</div>
 <% else %>
   <p>Your cart is empty.</p>
 <% end %>
